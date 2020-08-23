@@ -7,6 +7,7 @@ import Toggle from './Toggle';
 import LoggingButton from './LoggingButton';
 import Greeting from './Greeting';
 import NameForm from './NameForm';
+import Calculator from './Calculator';
 
 function formatName(user) {
   return user.firstName + ' ' + user.lastName;
@@ -138,6 +139,7 @@ function App(state) {
       listItems: { listItems}
       <Blog posts={posts} />
       <NameForm></NameForm>
+      <Calculator />
     </div>
   );
 }
