@@ -1,4 +1,5 @@
 import React from 'react';
+import FancyBorder from './FancyBorder';
 import './App.css';
 import Hello from './Hello';
 import Comment from './Comment';
@@ -71,6 +72,27 @@ function Blog(props) {
   );
 }
 
+function Dialog(props) {
+  return (
+    <FancyBorder color="blue">
+      <h1 className="Dialog-title">
+        {props.title}
+      </h1>
+      <p className="Dialog-message">
+        {props.message}
+      </p>
+    </FancyBorder>
+  );
+}
+
+function WelcomeDialog() {
+  return (
+    <Dialog
+      title="Welcome"
+      message="Thank you for visiting our spacecraft!" />
+  );
+}
+
 function App(state) {
 
   state = {
@@ -140,6 +162,20 @@ function App(state) {
       <Blog posts={posts} />
       <NameForm></NameForm>
       <Calculator />
+
+      <FancyBorder color="blue" header={
+        <h1>Hello, fancy border component</h1>
+      } footer={
+        <em>Footer area here</em>
+      }>
+        <h1 className="Dialog-title">
+          Fancy border title
+      </h1>
+        <p className="Dialog-message">
+          Fancy border mesage!
+      </p>
+      </FancyBorder>
+      <WelcomeDialog />
     </div>
   );
 }
