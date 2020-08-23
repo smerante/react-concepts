@@ -43,8 +43,36 @@ function WarningBanner(props) {
   );
 }
 
-function App() {
+function Blog(props) {
+  const sidebar = (
+    <ul>
+      {props.posts.map((post) =>
+        <li key={post.key}>
+          {post.title}
+        </li>
+      )}
+    </ul>
+  );
+  const content = props.posts.map((post) =>
+    <div key={post.key}>
+      <h3>{post.title}</h3>
+      <p>{post.content}</p>
+    </div>
+  );
+  return (
+    <div>
+      {sidebar}
+      <hr />
+      {content}
+    </div>
+  );
+}
 
+function App(state) {
+
+  state = {
+    numbers: [1, 2, 3, 4, 5]
+  }
   const user = {
     firstName: 'Sam',
     lastName: 'Merante'
@@ -59,9 +87,23 @@ function App() {
     myDate: `${new Date()}`
   }
 
-  const element = getGreeting(user);
+  function updateNumbers() {
+    // numbers.push(numbers.length + 1);
+    // console.warn('numbers: ', numbers);
+  }
 
+  const listItems = <div>
+    <button onClick={updateNumbers}>Add number</button>
+    <ul>{
+      state.numbers.map((number) =>
+        <li key={number}>{number * 2}</li>
+      )}</ul>
+  </div>;
 
+  const posts = [
+    { key: 'Hello_World', id: 1, title: 'Hello World', content: 'Welcome to learning React!' },
+    { key: 'Installation', id: 2, title: 'Installation', content: 'You can install React from npm.' }
+  ];
   return (
     <div className="App">
       {/* {element}
@@ -91,6 +133,8 @@ function App() {
       </div>
       <WarningBanner warn="Error: This is a warning message"></WarningBanner>
       <WarningBanner></WarningBanner>
+      listItems: { listItems}
+      <Blog posts={posts} />
     </div>
   );
 }
