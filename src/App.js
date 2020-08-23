@@ -6,6 +6,8 @@ import Clock from './Clock';
 import Toggle from './Toggle';
 import LoggingButton from './LoggingButton';
 import Greeting from './Greeting';
+import NameForm from './NameForm';
+
 function formatName(user) {
   return user.firstName + ' ' + user.lastName;
 }
@@ -135,6 +137,7 @@ function App(state) {
       <WarningBanner></WarningBanner>
       listItems: { listItems}
       <Blog posts={posts} />
+      <NameForm></NameForm>
     </div>
   );
 }
